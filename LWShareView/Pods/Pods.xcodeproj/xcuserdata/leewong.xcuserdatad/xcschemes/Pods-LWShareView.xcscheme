@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E33B802550DDD154C8B6DE6311B7820B'
+               BlueprintIdentifier = 'AE5CFA750C38A015E02C49C57FED6412'
                BlueprintName = 'Pods-LWShareView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-LWShareView.a'>

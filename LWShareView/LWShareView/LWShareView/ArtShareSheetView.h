@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ArtShareSheetView : UIView
-
+@property (nonatomic, copy) void (^shareBtnClickBlock)(NSIndexPath *index);
 @end

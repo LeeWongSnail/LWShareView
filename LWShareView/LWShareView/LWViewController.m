@@ -27,13 +27,17 @@
     self.sheetView = shareSheetView;
     self.sheetView.frame = CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, 314);
     CGRect frame = self.sheetView.frame;
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:4 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:4 options:UIViewAnimationOptionCurveEaseIn animations:^{
         CGFloat y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
         self.sheetView.frame = CGRectMake(frame.origin.x, y, frame.size.width, frame.size.height);
     } completion:^(BOOL finished) {
         
     }];
 
+    
+    self.sheetView.shareBtnClickBlock = ^(NSIndexPath *index) {
+        NSLog(@"%@",index);
+    };
 }
 
 - (void)hideSheetView
@@ -80,6 +84,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor blueColor];
 }
 
 - (void)didReceiveMemoryWarning {

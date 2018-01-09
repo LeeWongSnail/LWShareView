@@ -8,12 +8,13 @@
 
 #import "ArtShareSheetView.h"
 #import "UIColor+ArtBox.h"
+#import "ArtShareContentView.h"
 #import <Masonry.h>
 
 @interface ArtShareSheetView ()
 @property (nonatomic, strong) UIButton *cancelBtn;
-@property (nonatomic, strong) UIView *contentView;
-@property (nonatomic, strong) UILabel *shareTipLabel;
+@property (nonatomic, strong) ArtShareContentView *contentView;
+
 @end
 
 @implementation ArtShareSheetView
@@ -41,33 +42,25 @@
         make.bottom.equalTo(self.cancelBtn.mas_top).offset(-10);
     }];
     
-    [self.shareTipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_top).offset(20);
-        make.centerX.equalTo(self.contentView.mas_centerX);
-    }];
+}
+
+- (void)setShareBtnClickBlock:(void (^)(NSIndexPath *))shareBtnClickBlock
+{
+    _shareBtnClickBlock = shareBtnClickBlock;
+    self.contentView.shareBtnClickBlock = shareBtnClickBlock;
 }
 
 #pragma mark - Lazy Load
 
-- (UILabel *)shareTipLabel
-{
-    if (_shareTipLabel == nil) {
-        _shareTipLabel = [[UILabel alloc] init];
-        _shareTipLabel.font = [UIFont systemFontOfSize:17];
-        _shareTipLabel.textColor = [UIColor colorWithHexString:@"333333"];
-        _shareTipLabel.text = @"分享至";
-        [self.contentView addSubview:_shareTipLabel];
-    }
-    return _shareTipLabel;
-}
 
-- (UIView *)contentView
+- (ArtShareContentView *)contentView
 {
     if (_contentView == nil) {
-        _contentView = [[UIView alloc] init];
+        _contentView = [[ArtShareContentView alloc] init];
         _contentView.backgroundColor = [UIColor colorWithHexString:@"f0f0f0"];
         _contentView.layer.cornerRadius = 12;
         _contentView.layer.masksToBounds = YES;
+        _contentView.menus = [self menus];
         [self addSubview:_contentView];
     }
     return _contentView;
@@ -77,7 +70,7 @@
 {
     if (_cancelBtn == nil) {
         _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _cancelBtn.backgroundColor = [UIColor colorWithHexString:@"f0f0f0"];
+        _cancelBtn.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
         [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
         [_cancelBtn setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
         _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -86,6 +79,14 @@
         [self addSubview:_cancelBtn];
     }
     return _cancelBtn;
+}
+
+- (NSArray *)menus
+{
+    return @[@[@{kShareIcon:@"share_artbox",kShareTitle:@"转发"},@{kShareIcon:@"share_artchat",kShareTitle:@"艺信好友"}],
+             @[@{kShareIcon:@"share_qqzone",kShareTitle:@"QQ空间"},@{kShareIcon:@"share_qq",kShareTitle:@"QQ好友"},
+               @{kShareIcon:@"share_timeline",kShareTitle:@"微信朋友圈"},@{kShareIcon:@"share_wechat",kShareTitle:@"微信好友"},
+               @{kShareIcon:@"share_weibo",kShareTitle:@"微博"}]];
 }
 
 @end
