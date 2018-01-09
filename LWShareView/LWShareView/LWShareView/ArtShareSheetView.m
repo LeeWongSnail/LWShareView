@@ -7,8 +7,9 @@
 //
 
 #import "ArtShareSheetView.h"
-#import "UIColor+ArtBox.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ArtShareContentView.h"
+#import "UIColor+ArtBox.h"
 #import <Masonry.h>
 
 @interface ArtShareSheetView ()
@@ -42,6 +43,11 @@
         make.bottom.equalTo(self.cancelBtn.mas_top).offset(-10);
     }];
     
+    @weakify(self)
+    [[self.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        
+    }];
 }
 
 - (void)setShareBtnClickBlock:(void (^)(NSIndexPath *))shareBtnClickBlock

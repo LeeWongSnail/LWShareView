@@ -134,6 +134,7 @@
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
+        [self addSubview:_collectionView];
     }
     return _collectionView;
 }
@@ -145,7 +146,7 @@
         _flowLayout.minimumInteritemSpacing = kMinimumInteritemSpacing;
         CGFloat width = (SCREEN_W - kMargin * 2 - kPadding * 2-kMinimumInteritemSpacing*4) / 5.;
         _flowLayout.itemSize = CGSizeMake(width, 74);
-        
+//        _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     return _flowLayout;
 }
