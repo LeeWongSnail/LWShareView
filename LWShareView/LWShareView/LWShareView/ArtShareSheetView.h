@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ArtShareSheetView.h
 //  LWShareView
 //
 //  Created by LeeWong on 2018/1/9.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ArtShareSheetView : UIView
 
 @end
-
