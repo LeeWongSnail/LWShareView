@@ -8,6 +8,7 @@
 
 #import "LWViewController.h"
 #import "ArtShareSheetView.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry.h>
 
 @interface LWViewController ()
@@ -21,8 +22,6 @@
 - (void)showShareSheetView
 {
     ArtShareSheetView *shareSheetView = [[ArtShareSheetView alloc] init];
-//    shareSheetView.shareToolBarItems = self.shareToolBarItems;
-//    shareSheetView.showThirdSharePlatform = self.shareLinkString.length > 0;
     [self.view.window addSubview:shareSheetView];
     self.sheetView = shareSheetView;
     self.sheetView.frame = CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, 314);
@@ -38,12 +37,17 @@
     self.sheetView.shareBtnClickBlock = ^(NSIndexPath *index) {
         NSLog(@"%@",index);
     };
+    @weakify(self)
+    [[self.sheetView.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        [self hideSheetView];
+    }];
 }
 
 - (void)hideSheetView
 {
     CGRect frame = self.sheetView.frame;
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.61 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         CGFloat y = [UIScreen mainScreen].bounds.size.height ;
         self.sheetView.frame = CGRectMake(frame.origin.x, y, frame.size.width, frame.size.height);
     } completion:^(BOOL finished) {

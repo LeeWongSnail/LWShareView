@@ -7,13 +7,11 @@
 //
 
 #import "ArtShareSheetView.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ArtShareContentView.h"
 #import "UIColor+ArtBox.h"
 #import <Masonry.h>
 
 @interface ArtShareSheetView ()
-@property (nonatomic, strong) UIButton *cancelBtn;
 @property (nonatomic, strong) ArtShareContentView *contentView;
 
 @end
@@ -42,12 +40,6 @@
         make.top.left.right.equalTo(self);
         make.bottom.equalTo(self.cancelBtn.mas_top).offset(-10);
     }];
-    
-    @weakify(self)
-    [[self.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self)
-        
-    }];
 }
 
 - (void)setShareBtnClickBlock:(void (^)(NSIndexPath *))shareBtnClickBlock
@@ -66,7 +58,8 @@
         _contentView.backgroundColor = [UIColor colorWithHexString:@"f0f0f0"];
         _contentView.layer.cornerRadius = 12;
         _contentView.layer.masksToBounds = YES;
-        _contentView.menus = [self menus];
+        _contentView.topMenus = [self topMenus];
+        _contentView.bottomMenus = [self bottomMenus];
         [self addSubview:_contentView];
     }
     return _contentView;
@@ -87,12 +80,18 @@
     return _cancelBtn;
 }
 
-- (NSArray *)menus
+- (NSArray *)topMenus
 {
-    return @[@[@{kShareIcon:@"share_artbox",kShareTitle:@"转发"},@{kShareIcon:@"share_artchat",kShareTitle:@"艺信好友"}],
-             @[@{kShareIcon:@"share_qqzone",kShareTitle:@"QQ空间"},@{kShareIcon:@"share_qq",kShareTitle:@"QQ好友"},
-               @{kShareIcon:@"share_timeline",kShareTitle:@"微信朋友圈"},@{kShareIcon:@"share_wechat",kShareTitle:@"微信好友"},
-               @{kShareIcon:@"share_weibo",kShareTitle:@"微博"}]];
+    return @[@{kShareIcon:@"share_artbox",kShareTitle:@"转发"},@{kShareIcon:@"share_artchat",kShareTitle:@"艺信好友"}];
 }
+
+- (NSArray *)bottomMenus
+{
+    return @[@{kShareIcon:@"share_qqzone",kShareTitle:@"QQ空间"},@{kShareIcon:@"share_qq",kShareTitle:@"QQ好友"},
+             @{kShareIcon:@"share_timeline",kShareTitle:@"微信朋友圈"},@{kShareIcon:@"share_wechat",kShareTitle:@"微信好友"},
+             @{kShareIcon:@"share_weibo",kShareTitle:@"微博"},@{kShareIcon:@"share_timeline",kShareTitle:@"微信朋友圈"},@{kShareIcon:@"share_wechat",kShareTitle:@"微信好友"},
+             @{kShareIcon:@"share_weibo",kShareTitle:@"微博"}];
+}
+
 
 @end

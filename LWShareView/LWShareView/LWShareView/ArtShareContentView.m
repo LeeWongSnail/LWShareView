@@ -17,7 +17,8 @@
 #define kPadding 15
 #define kFooterHeight 30
 #define kMinimumInteritemSpacing  10
-
+#define kItemWidth (SCREEN_W - kMargin * 2 - kPadding * 2-kMinimumInteritemSpacing*4) / 5.
+#define kItemHeight 74
 
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
@@ -27,8 +28,11 @@
 
 
 @interface ArtShareContentView () <UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) UICollectionView *topCollectionView;
+@property (nonatomic, strong) UICollectionView *bottomCollectionView;
+@property (nonatomic, strong) UICollectionViewFlowLayout *topFlowLayout;
+@property (nonatomic, strong) UICollectionViewFlowLayout *bottomFlowLayout;
+@property (nonatomic, strong) UIView *sepLine;
 @property (nonatomic, strong) UILabel *shareTipLabel;
 @end
 
@@ -52,38 +56,53 @@
         make.centerX.equalTo(self.mas_centerX);
     }];
     
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.topCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.shareTipLabel.mas_bottom).offset(kPadding);
-        make.bottom.equalTo(self.mas_bottom).offset(-kPadding);
         make.left.equalTo(self.mas_left).offset(kPadding);
         make.right.equalTo(self.mas_right).offset(-kPadding);
+        make.height.equalTo(@(kItemHeight));
+    }];
+    
+    [self.sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(1.0/[UIScreen mainScreen].scale));
+        make.left.right.equalTo(self.topCollectionView);
+        make.top.equalTo(self.topCollectionView.mas_bottom).offset(kFooterHeight/2.0);
+    }];
+    
+    [self.bottomCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.mas_bottom).offset(-kPadding);
+        make.left.right.equalTo(self.topCollectionView);
+        make.top.equalTo(self.topCollectionView.mas_bottom).offset(kFooterHeight);
     }];
 }
 
-- (void)setMenus:(NSArray *)menus
+- (void)setTopMenus:(NSArray *)topMenus
 {
-    _menus = menus;
-    [self.collectionView reloadData];
+    _topMenus = topMenus;
+    [self.topCollectionView reloadData];
 }
+
+- (void)setBottomMenus:(NSArray *)bottomMenus
+{
+    _bottomMenus = bottomMenus;
+    [self.bottomCollectionView reloadData];
+}
+
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return self.menus.count;
-}
-
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.menus[section] count];
+    [collectionView.collectionViewLayout invalidateLayout];
+    return self.topCollectionView == collectionView ? self.topMenus.count : self.bottomMenus.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *menus = nil;
+    self.topCollectionView == collectionView ? (menus = self.topMenus) : (menus= self.bottomMenus);
     ArtShareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier" forIndexPath:indexPath];
-    NSArray *items = [self.menus objectAtIndex:indexPath.section];
-    NSDictionary *item = items[indexPath.item];
+    NSDictionary *item = menus[indexPath.item];
     [cell.shareBtn setTitle:item[kShareTitle] forState:UIControlStateNormal];
     [cell.shareBtn setImage:[UIImage imageNamed:item[kShareIcon]] forState:UIControlStateNormal];
     @weakify(self)
@@ -97,58 +116,64 @@
 }
 
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView" forIndexPath:indexPath];
-    if (kind == UICollectionElementKindSectionFooter && indexPath.section == 0) {
-        view.backgroundColor = [UIColor clearColor];
-        
-        UIView *sepline = [[UIView alloc] init];
-        [view addSubview:sepline];
-        [sepline mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(view);
-            make.centerY.equalTo(view.mas_centerY);
-            make.height.equalTo(@(1.0/[UIScreen mainScreen].scale));
-        }];
-        sepline.backgroundColor = [UIColor colorWithHexString:@"d9d9d9"];
-        return view;
-    }
-    return view;
-}
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return CGSizeMake(self.frame.size.width, kFooterHeight);
-}
 
 
 #pragma mark - Lazy Load
 
-- (UICollectionView *)collectionView
+- (UICollectionView *)topCollectionView
 {
-    if (_collectionView == nil) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
-        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView"];
-        [self addSubview:_collectionView];
-        [_collectionView registerClass:[ArtShareCollectionViewCell class] forCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier"];
-        _collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        [self addSubview:_collectionView];
+    if (_topCollectionView == nil) {
+        _topCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.topFlowLayout];
+        [self addSubview:_topCollectionView];
+        [_topCollectionView registerClass:[ArtShareCollectionViewCell class] forCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier"];
+        _topCollectionView.backgroundColor = [UIColor clearColor];
+        _topCollectionView.dataSource = self;
+        _topCollectionView.delegate = self;
+        _topCollectionView.showsHorizontalScrollIndicator = NO;
+        _topCollectionView.showsVerticalScrollIndicator = NO;
+        [self addSubview:_topCollectionView];
     }
-    return _collectionView;
+    return _topCollectionView;
 }
 
-- (UICollectionViewFlowLayout *)flowLayout
+- (UICollectionView *)bottomCollectionView
 {
-    if (_flowLayout == nil) {
-        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _flowLayout.minimumInteritemSpacing = kMinimumInteritemSpacing;
-        CGFloat width = (SCREEN_W - kMargin * 2 - kPadding * 2-kMinimumInteritemSpacing*4) / 5.;
-        _flowLayout.itemSize = CGSizeMake(width, 74);
-//        _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    if (_bottomCollectionView == nil) {
+        _bottomCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.bottomFlowLayout];
+        [self addSubview:_bottomCollectionView];
+        [_bottomCollectionView registerClass:[ArtShareCollectionViewCell class] forCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier"];
+        _bottomCollectionView.backgroundColor = [UIColor clearColor];
+        _bottomCollectionView.dataSource = self;
+        _bottomCollectionView.delegate = self;
+        _bottomCollectionView.showsHorizontalScrollIndicator = NO;
+        _bottomCollectionView.showsVerticalScrollIndicator = NO;
+        [self addSubview:_bottomCollectionView];
     }
-    return _flowLayout;
+    return _bottomCollectionView;
+}
+
+
+- (UICollectionViewFlowLayout *)topFlowLayout
+{
+    if (_topFlowLayout == nil) {
+        _topFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _topFlowLayout.minimumInteritemSpacing = kMinimumInteritemSpacing;
+        _topFlowLayout.itemSize = CGSizeMake(kItemWidth, kItemHeight);
+        _topFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    }
+    return _topFlowLayout;
+}
+
+- (UICollectionViewFlowLayout *)bottomFlowLayout
+{
+    if (_bottomFlowLayout == nil) {
+        _bottomFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _bottomFlowLayout.minimumInteritemSpacing = kMinimumInteritemSpacing;
+        _bottomFlowLayout.itemSize = CGSizeMake(kItemWidth, kItemHeight);
+        _bottomFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    }
+    return _bottomFlowLayout;
 }
 
 
@@ -162,6 +187,17 @@
         [self addSubview:_shareTipLabel];
     }
     return _shareTipLabel;
+}
+
+
+- (UIView *)sepLine
+{
+    if (_sepLine == nil) {
+        _sepLine = [[UIView alloc] init];
+        _sepLine.backgroundColor = [UIColor colorWithHexString:@"d9d9d9"];
+        [self addSubview:_sepLine];
+    }
+    return _sepLine;
 }
 
 @end

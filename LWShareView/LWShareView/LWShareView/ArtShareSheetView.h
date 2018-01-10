@@ -10,4 +10,6 @@
 
 @interface ArtShareSheetView : UIView
 @property (nonatomic, copy) void (^shareBtnClickBlock)(NSIndexPath *index);
+@property (nonatomic, strong) UIButton *cancelBtn;
+
 @end
