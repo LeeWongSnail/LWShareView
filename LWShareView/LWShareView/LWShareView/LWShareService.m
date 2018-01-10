@@ -60,7 +60,8 @@
     LWShareSheetView *shareSheetView = [[LWShareSheetView alloc] init];
     [viewController.view.window addSubview:shareSheetView];
     self.sheetView = shareSheetView;
-    self.sheetView.frame = CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, 314);
+    CGFloat height = [LWShareSheetView sectionCount] == 2?314:([LWShareSheetView sectionCount] == 1?220:106);
+    self.sheetView.frame = CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, height);
     CGRect frame = self.sheetView.frame;
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:3 options:UIViewAnimationOptionCurveEaseIn animations:^{
         CGFloat y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
@@ -70,9 +71,7 @@
     }];
     
     
-    self.sheetView.shareBtnClickBlock = ^(NSIndexPath *index) {
-        NSLog(@"%@",index);
-    };
+    self.sheetView.shareBtnClickBlock = self.shareBtnClickBlock;
     @weakify(self)
     [[self.sheetView.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)

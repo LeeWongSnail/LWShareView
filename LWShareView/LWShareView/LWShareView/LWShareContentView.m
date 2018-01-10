@@ -72,7 +72,7 @@
     [self.bottomCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_bottom).offset(-kPadding);
         make.left.right.equalTo(self.topCollectionView);
-        make.top.equalTo(self.topCollectionView.mas_bottom).offset(kFooterHeight);
+        make.top.equalTo(self.sepLine.mas_bottom);
     }];
 }
 
@@ -86,6 +86,7 @@
 {
     _bottomMenus = bottomMenus;
     [self.bottomCollectionView reloadData];
+    self.sepLine.hidden = _bottomMenus.count == 0;
 }
 
 

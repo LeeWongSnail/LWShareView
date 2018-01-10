@@ -48,6 +48,18 @@
     self.contentView.shareBtnClickBlock = shareBtnClickBlock;
 }
 
++ (NSInteger)sectionCount
+{
+    NSInteger count = 0;
+    if ([LWShareSheetView topMenus].count > 0) {
+        count += 1;
+    }
+    if ([LWShareSheetView bottomMenus].count > 0) {
+        count += 1;
+    }
+    return count;
+}
+
 #pragma mark - Lazy Load
 
 
@@ -58,8 +70,8 @@
         _contentView.backgroundColor = [UIColor colorWithHexString:@"f0f0f0"];
         _contentView.layer.cornerRadius = 12;
         _contentView.layer.masksToBounds = YES;
-        _contentView.topMenus = [self topMenus];
-        _contentView.bottomMenus = [self bottomMenus];
+        _contentView.topMenus = [LWShareSheetView topMenus];
+        _contentView.bottomMenus = [LWShareSheetView bottomMenus];
         [self addSubview:_contentView];
     }
     return _contentView;
@@ -80,17 +92,18 @@
     return _cancelBtn;
 }
 
-- (NSArray *)topMenus
++ (NSArray *)topMenus
 {
     return @[@{kShareIcon:@"share_artbox",kShareTitle:@"转发"},@{kShareIcon:@"share_artchat",kShareTitle:@"艺信好友"}];
 }
 
-- (NSArray *)bottomMenus
++ (NSArray *)bottomMenus
 {
     return @[@{kShareIcon:@"share_qqzone",kShareTitle:@"QQ空间"},@{kShareIcon:@"share_qq",kShareTitle:@"QQ好友"},
              @{kShareIcon:@"share_timeline",kShareTitle:@"微信朋友圈"},@{kShareIcon:@"share_wechat",kShareTitle:@"微信好友"},
              @{kShareIcon:@"share_weibo",kShareTitle:@"微博"},@{kShareIcon:@"share_timeline",kShareTitle:@"微信朋友圈"},@{kShareIcon:@"share_wechat",kShareTitle:@"微信好友"},
              @{kShareIcon:@"share_weibo",kShareTitle:@"微博"}];
+    
 }
 
 

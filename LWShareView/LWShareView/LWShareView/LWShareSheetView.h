@@ -12,4 +12,5 @@
 @property (nonatomic, copy) void (^shareBtnClickBlock)(NSIndexPath *index);
 @property (nonatomic, strong) UIButton *cancelBtn;
 
++ (NSInteger)sectionCount;
 @end
