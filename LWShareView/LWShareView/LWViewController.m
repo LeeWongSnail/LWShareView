@@ -7,7 +7,7 @@
 //
 
 #import "LWViewController.h"
-#import "ArtShareService.h"
+#import "LWShareService.h"
 
 @interface LWViewController ()
 
@@ -16,10 +16,10 @@
 @implementation LWViewController
 
 - (IBAction)shareDidClick:(UIButton *)sender {
-    [ArtShareService shared].shareBtnClickBlock = ^(NSIndexPath *index) {
+    [LWShareService shared].shareBtnClickBlock = ^(NSIndexPath *index) {
         NSLog(@"%@",index);
     };
-    [[ArtShareService shared] showInViewController:self];
+    [[LWShareService shared] showInViewController:self];
 }
 
 

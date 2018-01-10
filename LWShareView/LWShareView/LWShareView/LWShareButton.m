@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 cn.apple. All rights reserved.
 //
 
-#import "ArtShareButton.h"
-#import "UIColor+ArtBox.h"
+#import "LWShareButton.h"
+#import "UIColor+LW.h"
 
-@implementation ArtShareButton
+@implementation LWShareButton
 
 - (instancetype)init
 {

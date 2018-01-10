@@ -6,26 +6,26 @@
 //  Copyright © 2018年 LeeWong. All rights reserved.
 //
 
-#import "ArtShareService.h"
-#import "ArtShareSheetView.h"
+#import "LWShareService.h"
+#import "LWShareSheetView.h"
 #import <Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 
 
-@interface ArtShareService ()
-@property (nonatomic, strong) ArtShareSheetView *sheetView;
+@interface LWShareService ()
+@property (nonatomic, strong) LWShareSheetView *sheetView;
 @property (nonatomic, assign) BOOL isShowing;
 @property (nonatomic, strong) UIView *maskView;
 @end
 
-@implementation ArtShareService
+@implementation LWShareService
 + (instancetype)shared
 {
     static dispatch_once_t onceToken;
-    static ArtShareService* service;
+    static LWShareService* service;
     dispatch_once(&onceToken, ^{
-        service = [[ArtShareService alloc] init];
+        service = [[LWShareService alloc] init];
     });
     return service;
 }
@@ -57,7 +57,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSheetView)];
     [maskView addGestureRecognizer:tap];
     
-    ArtShareSheetView *shareSheetView = [[ArtShareSheetView alloc] init];
+    LWShareSheetView *shareSheetView = [[LWShareSheetView alloc] init];
     [viewController.view.window addSubview:shareSheetView];
     self.sheetView = shareSheetView;
     self.sheetView.frame = CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, 314);
@@ -97,10 +97,10 @@
 
 #pragma mark - Lazy Load
 
-- (ArtShareSheetView *)sheetView
+- (LWShareSheetView *)sheetView
 {
     if (_sheetView == nil) {
-        _sheetView = [[ArtShareSheetView alloc] init];
+        _sheetView = [[LWShareSheetView alloc] init];
         
     }
     return _sheetView;

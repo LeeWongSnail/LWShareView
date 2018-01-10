@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ArtShareButton : UIButton
+@interface LWShareButton : UIButton
 
 @end

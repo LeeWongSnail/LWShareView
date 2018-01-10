@@ -6,17 +6,17 @@
 //  Copyright © 2018年 LeeWong. All rights reserved.
 //
 
-#import "ArtShareSheetView.h"
-#import "ArtShareContentView.h"
-#import "UIColor+ArtBox.h"
+#import "LWShareSheetView.h"
+#import "LWShareContentView.h"
+#import "UIColor+LW.h"
 #import <Masonry.h>
 
-@interface ArtShareSheetView ()
-@property (nonatomic, strong) ArtShareContentView *contentView;
+@interface LWShareSheetView ()
+@property (nonatomic, strong) LWShareContentView *contentView;
 
 @end
 
-@implementation ArtShareSheetView
+@implementation LWShareSheetView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -51,10 +51,10 @@
 #pragma mark - Lazy Load
 
 
-- (ArtShareContentView *)contentView
+- (LWShareContentView *)contentView
 {
     if (_contentView == nil) {
-        _contentView = [[ArtShareContentView alloc] init];
+        _contentView = [[LWShareContentView alloc] init];
         _contentView.backgroundColor = [UIColor colorWithHexString:@"f0f0f0"];
         _contentView.layer.cornerRadius = 12;
         _contentView.layer.masksToBounds = YES;

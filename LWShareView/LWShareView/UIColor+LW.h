@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (ArtBox)
+@interface UIColor (LW)
 
 @property (nonatomic, readonly) CGColorSpaceModel colorSpaceModel;
 @property (nonatomic, readonly) BOOL canProvideRGBComponents;

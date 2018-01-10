@@ -16,14 +16,14 @@
 		EB00A4B92004720700DC2102 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4B82004720700DC2102 /* main.m */; };
 		EB00A4C32004720800DC2102 /* LWShareViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4C22004720800DC2102 /* LWShareViewTests.m */; };
 		EB00A4CE2004720800DC2102 /* LWShareViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4CD2004720800DC2102 /* LWShareViewUITests.m */; };
-		EB00A4DE2004731A00DC2102 /* ArtShareSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4DD2004731A00DC2102 /* ArtShareSheetView.m */; };
+		EB00A4DE2004731A00DC2102 /* LWShareSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4DD2004731A00DC2102 /* LWShareSheetView.m */; };
 		EB00A4E52004743400DC2102 /* LWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4E42004743400DC2102 /* LWViewController.m */; };
-		EB00A4E820049B6100DC2102 /* UIColor+ArtBox.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4E620049B6100DC2102 /* UIColor+ArtBox.m */; };
-		EB00A4EB20049EAC00DC2102 /* ArtShareContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4EA20049EAC00DC2102 /* ArtShareContentView.m */; };
+		EB00A4E820049B6100DC2102 /* UIColor+LW.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4E620049B6100DC2102 /* UIColor+LW.m */; };
+		EB00A4EB20049EAC00DC2102 /* LWShareContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A4EA20049EAC00DC2102 /* LWShareContentView.m */; };
 		EB00A4F32004A5E100DC2102 /* Share.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB00A4F22004A5E100DC2102 /* Share.xcassets */; };
-		EB00A5042004C94400DC2102 /* ArtShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5002004C94400DC2102 /* ArtShareCollectionViewCell.m */; };
-		EB00A5052004C94400DC2102 /* ArtShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5032004C94400DC2102 /* ArtShareButton.m */; };
-		EB00A5162005F66000DC2102 /* ArtShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5152005F66000DC2102 /* ArtShareService.m */; };
+		EB00A5042004C94400DC2102 /* LWShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5002004C94400DC2102 /* LWShareCollectionViewCell.m */; };
+		EB00A5052004C94400DC2102 /* LWShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5032004C94400DC2102 /* LWShareButton.m */; };
+		EB00A5162005F66000DC2102 /* LWShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5152005F66000DC2102 /* LWShareService.m */; };
 		F24F37C0F3B77DD319915A02 /* libPods-LWShareViewUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1631C23A176D1E0C17012AC8 /* libPods-LWShareViewUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -66,21 +66,21 @@
 		EB00A4C92004720800DC2102 /* LWShareViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LWShareViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB00A4CD2004720800DC2102 /* LWShareViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWShareViewUITests.m; sourceTree = "<group>"; };
 		EB00A4CF2004720800DC2102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB00A4DC2004731A00DC2102 /* ArtShareSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtShareSheetView.h; sourceTree = "<group>"; };
-		EB00A4DD2004731A00DC2102 /* ArtShareSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtShareSheetView.m; sourceTree = "<group>"; };
+		EB00A4DC2004731A00DC2102 /* LWShareSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWShareSheetView.h; sourceTree = "<group>"; };
+		EB00A4DD2004731A00DC2102 /* LWShareSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWShareSheetView.m; sourceTree = "<group>"; };
 		EB00A4E32004743400DC2102 /* LWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWViewController.h; sourceTree = "<group>"; };
 		EB00A4E42004743400DC2102 /* LWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWViewController.m; sourceTree = "<group>"; };
-		EB00A4E620049B6100DC2102 /* UIColor+ArtBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ArtBox.m"; sourceTree = "<group>"; };
-		EB00A4E720049B6100DC2102 /* UIColor+ArtBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ArtBox.h"; sourceTree = "<group>"; };
-		EB00A4E920049EAC00DC2102 /* ArtShareContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtShareContentView.h; sourceTree = "<group>"; };
-		EB00A4EA20049EAC00DC2102 /* ArtShareContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtShareContentView.m; sourceTree = "<group>"; };
+		EB00A4E620049B6100DC2102 /* UIColor+LW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LW.m"; sourceTree = "<group>"; };
+		EB00A4E720049B6100DC2102 /* UIColor+LW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LW.h"; sourceTree = "<group>"; };
+		EB00A4E920049EAC00DC2102 /* LWShareContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWShareContentView.h; sourceTree = "<group>"; };
+		EB00A4EA20049EAC00DC2102 /* LWShareContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWShareContentView.m; sourceTree = "<group>"; };
 		EB00A4F22004A5E100DC2102 /* Share.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Share.xcassets; sourceTree = "<group>"; };
-		EB00A5002004C94400DC2102 /* ArtShareCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtShareCollectionViewCell.m; sourceTree = "<group>"; };
-		EB00A5012004C94400DC2102 /* ArtShareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtShareCollectionViewCell.h; sourceTree = "<group>"; };
-		EB00A5022004C94400DC2102 /* ArtShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtShareButton.h; sourceTree = "<group>"; };
-		EB00A5032004C94400DC2102 /* ArtShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtShareButton.m; sourceTree = "<group>"; };
-		EB00A5142005F66000DC2102 /* ArtShareService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtShareService.h; sourceTree = "<group>"; };
-		EB00A5152005F66000DC2102 /* ArtShareService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtShareService.m; sourceTree = "<group>"; };
+		EB00A5002004C94400DC2102 /* LWShareCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWShareCollectionViewCell.m; sourceTree = "<group>"; };
+		EB00A5012004C94400DC2102 /* LWShareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWShareCollectionViewCell.h; sourceTree = "<group>"; };
+		EB00A5022004C94400DC2102 /* LWShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWShareButton.h; sourceTree = "<group>"; };
+		EB00A5032004C94400DC2102 /* LWShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWShareButton.m; sourceTree = "<group>"; };
+		EB00A5142005F66000DC2102 /* LWShareService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWShareService.h; sourceTree = "<group>"; };
+		EB00A5152005F66000DC2102 /* LWShareService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWShareService.m; sourceTree = "<group>"; };
 		F381D8F3B2DD8E947B1623AC /* Pods-LWShareView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LWShareView.release.xcconfig"; path = "Pods/Target Support Files/Pods-LWShareView/Pods-LWShareView.release.xcconfig"; sourceTree = "<group>"; };
 		F9FB605A583B843E88B9A82B /* Pods-LWShareViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LWShareViewUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LWShareViewUITests/Pods-LWShareViewUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,8 +161,8 @@
 		EB00A4A82004720700DC2102 /* LWShareView */ = {
 			isa = PBXGroup;
 			children = (
-				EB00A4E720049B6100DC2102 /* UIColor+ArtBox.h */,
-				EB00A4E620049B6100DC2102 /* UIColor+ArtBox.m */,
+				EB00A4E720049B6100DC2102 /* UIColor+LW.h */,
+				EB00A4E620049B6100DC2102 /* UIColor+LW.m */,
 				EB00A4DB2004730800DC2102 /* LWShareView */,
 				EB00A4A92004720700DC2102 /* AppDelegate.h */,
 				EB00A4AA2004720700DC2102 /* AppDelegate.m */,
@@ -194,16 +194,16 @@
 		EB00A4DB2004730800DC2102 /* LWShareView */ = {
 			isa = PBXGroup;
 			children = (
-				EB00A5022004C94400DC2102 /* ArtShareButton.h */,
-				EB00A5032004C94400DC2102 /* ArtShareButton.m */,
-				EB00A5012004C94400DC2102 /* ArtShareCollectionViewCell.h */,
-				EB00A5002004C94400DC2102 /* ArtShareCollectionViewCell.m */,
-				EB00A4DC2004731A00DC2102 /* ArtShareSheetView.h */,
-				EB00A4DD2004731A00DC2102 /* ArtShareSheetView.m */,
-				EB00A4E920049EAC00DC2102 /* ArtShareContentView.h */,
-				EB00A4EA20049EAC00DC2102 /* ArtShareContentView.m */,
-				EB00A5142005F66000DC2102 /* ArtShareService.h */,
-				EB00A5152005F66000DC2102 /* ArtShareService.m */,
+				EB00A5022004C94400DC2102 /* LWShareButton.h */,
+				EB00A5032004C94400DC2102 /* LWShareButton.m */,
+				EB00A5012004C94400DC2102 /* LWShareCollectionViewCell.h */,
+				EB00A5002004C94400DC2102 /* LWShareCollectionViewCell.m */,
+				EB00A4DC2004731A00DC2102 /* LWShareSheetView.h */,
+				EB00A4DD2004731A00DC2102 /* LWShareSheetView.m */,
+				EB00A4E920049EAC00DC2102 /* LWShareContentView.h */,
+				EB00A4EA20049EAC00DC2102 /* LWShareContentView.m */,
+				EB00A5142005F66000DC2102 /* LWShareService.h */,
+				EB00A5152005F66000DC2102 /* LWShareService.m */,
 				EB00A4F22004A5E100DC2102 /* Share.xcassets */,
 			);
 			path = LWShareView;
@@ -502,15 +502,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB00A5162005F66000DC2102 /* ArtShareService.m in Sources */,
+				EB00A5162005F66000DC2102 /* LWShareService.m in Sources */,
 				EB00A4B92004720700DC2102 /* main.m in Sources */,
-				EB00A5052004C94400DC2102 /* ArtShareButton.m in Sources */,
-				EB00A4DE2004731A00DC2102 /* ArtShareSheetView.m in Sources */,
-				EB00A4EB20049EAC00DC2102 /* ArtShareContentView.m in Sources */,
-				EB00A4E820049B6100DC2102 /* UIColor+ArtBox.m in Sources */,
+				EB00A5052004C94400DC2102 /* LWShareButton.m in Sources */,
+				EB00A4DE2004731A00DC2102 /* LWShareSheetView.m in Sources */,
+				EB00A4EB20049EAC00DC2102 /* LWShareContentView.m in Sources */,
+				EB00A4E820049B6100DC2102 /* UIColor+LW.m in Sources */,
 				EB00A4AB2004720700DC2102 /* AppDelegate.m in Sources */,
 				EB00A4E52004743400DC2102 /* LWViewController.m in Sources */,
-				EB00A5042004C94400DC2102 /* ArtShareCollectionViewCell.m in Sources */,
+				EB00A5042004C94400DC2102 /* LWShareCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

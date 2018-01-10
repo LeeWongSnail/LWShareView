@@ -11,7 +11,7 @@
 #define kShareIcon @"kShareIcon"
 #define kShareTitle @"kShareTitle"
 
-@interface ArtShareContentView : UIView
+@interface LWShareContentView : UIView
 
 //防止按钮的数组 
 @property (nonatomic, strong) NSArray *topMenus;

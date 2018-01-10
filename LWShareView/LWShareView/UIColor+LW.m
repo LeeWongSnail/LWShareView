@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 zhaoguogang. All rights reserved.
 //
 
-#import "UIColor+ArtBox.h"
+#import "UIColor+LW.h"
 
 // Static cache of looked up color names. Used with +colorWithName:
 static NSMutableDictionary *colorNameCache = nil;
@@ -15,7 +15,7 @@ static NSMutableDictionary *colorNameCache = nil;
 + (UIColor *)searchForColorByName:(NSString *)cssColorName;
 @end
 
-@implementation UIColor (ArtBox)
+@implementation UIColor (LW)
 
 - (CGColorSpaceModel)colorSpaceModel {
     return CGColorSpaceGetModel(CGColorGetColorSpace(self.CGColor));

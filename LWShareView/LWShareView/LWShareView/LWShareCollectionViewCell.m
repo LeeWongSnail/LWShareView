@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 GK. All rights reserved.
 //
 
-#import "ArtShareCollectionViewCell.h"
-#import "ArtShareButton.h"
+#import "LWShareCollectionViewCell.h"
+#import "LWShareButton.h"
 #import <Masonry.h>
-@implementation ArtShareCollectionViewCell
+@implementation LWShareCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -22,10 +22,10 @@
     return self;
 }
 
-- (ArtShareButton *)shareBtn
+- (LWShareButton *)shareBtn
 {
     if (_shareBtn == nil) {
-        ArtShareButton *shareBtn = [[ArtShareButton alloc] init];
+        LWShareButton *shareBtn = [[LWShareButton alloc] init];
         shareBtn.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:shareBtn];
         _shareBtn = shareBtn;

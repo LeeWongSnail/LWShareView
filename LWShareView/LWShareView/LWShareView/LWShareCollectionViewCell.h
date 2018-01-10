@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class ArtShareButton;
+@class LWShareButton;
 
-@interface ArtShareCollectionViewCell : UICollectionViewCell
+@interface LWShareCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) ArtShareButton *shareBtn;
+@property (nonatomic, strong) LWShareButton *shareBtn;
 
 @end

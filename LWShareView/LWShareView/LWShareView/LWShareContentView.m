@@ -6,11 +6,11 @@
 //  Copyright © 2018年 LeeWong. All rights reserved.
 //
 
-#import "ArtShareContentView.h"
-#import "ArtShareCollectionViewCell.h"
+#import "LWShareContentView.h"
+#import "LWShareCollectionViewCell.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import "UIColor+ArtBox.h"
-#import "ArtShareButton.h"
+#import "UIColor+LW.h"
+#import "LWShareButton.h"
 #import <Masonry.h>
 
 #define kMargin 10
@@ -27,7 +27,7 @@
 #define UI_IS_IPHONE6PLUS       (UI_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0 || [[UIScreen mainScreen] bounds].size.width == 736.0) // Both orientations
 
 
-@interface ArtShareContentView () <UICollectionViewDelegate,UICollectionViewDataSource>
+@interface LWShareContentView () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *topCollectionView;
 @property (nonatomic, strong) UICollectionView *bottomCollectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *topFlowLayout;
@@ -36,7 +36,7 @@
 @property (nonatomic, strong) UILabel *shareTipLabel;
 @end
 
-@implementation ArtShareContentView
+@implementation LWShareContentView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -101,7 +101,7 @@
 {
     NSArray *menus = nil;
     self.topCollectionView == collectionView ? (menus = self.topMenus) : (menus= self.bottomMenus);
-    ArtShareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier" forIndexPath:indexPath];
+    LWShareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWShareCollectionViewCell" forIndexPath:indexPath];
     NSDictionary *item = menus[indexPath.item];
     [cell.shareBtn setTitle:item[kShareTitle] forState:UIControlStateNormal];
     [cell.shareBtn setImage:[UIImage imageNamed:item[kShareIcon]] forState:UIControlStateNormal];
@@ -126,7 +126,7 @@
     if (_topCollectionView == nil) {
         _topCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.topFlowLayout];
         [self addSubview:_topCollectionView];
-        [_topCollectionView registerClass:[ArtShareCollectionViewCell class] forCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier"];
+        [_topCollectionView registerClass:[LWShareCollectionViewCell class] forCellWithReuseIdentifier:@"LWShareCollectionViewCell"];
         _topCollectionView.backgroundColor = [UIColor clearColor];
         _topCollectionView.dataSource = self;
         _topCollectionView.delegate = self;
@@ -142,7 +142,7 @@
     if (_bottomCollectionView == nil) {
         _bottomCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.bottomFlowLayout];
         [self addSubview:_bottomCollectionView];
-        [_bottomCollectionView registerClass:[ArtShareCollectionViewCell class] forCellWithReuseIdentifier:@"ArtShareCellReuseIdentifier"];
+        [_bottomCollectionView registerClass:[LWShareCollectionViewCell class] forCellWithReuseIdentifier:@"LWShareCollectionViewCell"];
         _bottomCollectionView.backgroundColor = [UIColor clearColor];
         _bottomCollectionView.dataSource = self;
         _bottomCollectionView.delegate = self;

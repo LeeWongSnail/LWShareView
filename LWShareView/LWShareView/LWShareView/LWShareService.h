@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ArtShareService : NSObject
+@interface LWShareService : NSObject
 
 @property (nonatomic, copy) void (^shareBtnClickBlock)(NSIndexPath *index);
 

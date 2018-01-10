@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ArtShareSheetView : UIView
+@interface LWShareSheetView : UIView
 @property (nonatomic, copy) void (^shareBtnClickBlock)(NSIndexPath *index);
 @property (nonatomic, strong) UIButton *cancelBtn;
 
