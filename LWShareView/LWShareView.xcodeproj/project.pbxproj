@@ -23,6 +23,7 @@
 		EB00A4F32004A5E100DC2102 /* Share.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB00A4F22004A5E100DC2102 /* Share.xcassets */; };
 		EB00A5042004C94400DC2102 /* ArtShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5002004C94400DC2102 /* ArtShareCollectionViewCell.m */; };
 		EB00A5052004C94400DC2102 /* ArtShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5032004C94400DC2102 /* ArtShareButton.m */; };
+		EB00A5162005F66000DC2102 /* ArtShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = EB00A5152005F66000DC2102 /* ArtShareService.m */; };
 		F24F37C0F3B77DD319915A02 /* libPods-LWShareViewUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1631C23A176D1E0C17012AC8 /* libPods-LWShareViewUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		EB00A5012004C94400DC2102 /* ArtShareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtShareCollectionViewCell.h; sourceTree = "<group>"; };
 		EB00A5022004C94400DC2102 /* ArtShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtShareButton.h; sourceTree = "<group>"; };
 		EB00A5032004C94400DC2102 /* ArtShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtShareButton.m; sourceTree = "<group>"; };
+		EB00A5142005F66000DC2102 /* ArtShareService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtShareService.h; sourceTree = "<group>"; };
+		EB00A5152005F66000DC2102 /* ArtShareService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtShareService.m; sourceTree = "<group>"; };
 		F381D8F3B2DD8E947B1623AC /* Pods-LWShareView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LWShareView.release.xcconfig"; path = "Pods/Target Support Files/Pods-LWShareView/Pods-LWShareView.release.xcconfig"; sourceTree = "<group>"; };
 		F9FB605A583B843E88B9A82B /* Pods-LWShareViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LWShareViewUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LWShareViewUITests/Pods-LWShareViewUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +202,8 @@
 				EB00A4DD2004731A00DC2102 /* ArtShareSheetView.m */,
 				EB00A4E920049EAC00DC2102 /* ArtShareContentView.h */,
 				EB00A4EA20049EAC00DC2102 /* ArtShareContentView.m */,
+				EB00A5142005F66000DC2102 /* ArtShareService.h */,
+				EB00A5152005F66000DC2102 /* ArtShareService.m */,
 				EB00A4F22004A5E100DC2102 /* Share.xcassets */,
 			);
 			path = LWShareView;
@@ -497,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB00A5162005F66000DC2102 /* ArtShareService.m in Sources */,
 				EB00A4B92004720700DC2102 /* main.m in Sources */,
 				EB00A5052004C94400DC2102 /* ArtShareButton.m in Sources */,
 				EB00A4DE2004731A00DC2102 /* ArtShareSheetView.m in Sources */,
